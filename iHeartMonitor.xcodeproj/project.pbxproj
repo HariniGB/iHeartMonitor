@@ -1,0 +1,563 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C094E9FE2093E98500EDD213 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C094E9FD2093E98500EDD213 /* AppDelegate.swift */; };
+		C094EA002093E98500EDD213 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C094E9FF2093E98500EDD213 /* ViewController.swift */; };
+		C094EA032093E98500EDD213 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C094EA012093E98500EDD213 /* Main.storyboard */; };
+		C094EA052093E98500EDD213 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C094EA042093E98500EDD213 /* Assets.xcassets */; };
+		C094EA082093E98500EDD213 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C094EA062093E98500EDD213 /* LaunchScreen.storyboard */; };
+		C094EA132093E98500EDD213 /* iHeartMonitorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C094EA122093E98500EDD213 /* iHeartMonitorTests.swift */; };
+		C094EA1E2093E98500EDD213 /* iHeartMonitorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C094EA1D2093E98500EDD213 /* iHeartMonitorUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		C094EA0F2093E98500EDD213 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C094E9F22093E98500EDD213 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C094E9F92093E98500EDD213;
+			remoteInfo = iHeartMonitor;
+		};
+		C094EA1A2093E98500EDD213 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C094E9F22093E98500EDD213 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C094E9F92093E98500EDD213;
+			remoteInfo = iHeartMonitor;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		C094E9FA2093E98500EDD213 /* iHeartMonitor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iHeartMonitor.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C094E9FD2093E98500EDD213 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		C094E9FF2093E98500EDD213 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		C094EA022093E98500EDD213 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		C094EA042093E98500EDD213 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C094EA072093E98500EDD213 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		C094EA092093E98500EDD213 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C094EA0E2093E98500EDD213 /* iHeartMonitorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iHeartMonitorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C094EA122093E98500EDD213 /* iHeartMonitorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iHeartMonitorTests.swift; sourceTree = "<group>"; };
+		C094EA142093E98500EDD213 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C094EA192093E98500EDD213 /* iHeartMonitorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iHeartMonitorUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C094EA1D2093E98500EDD213 /* iHeartMonitorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iHeartMonitorUITests.swift; sourceTree = "<group>"; };
+		C094EA1F2093E98500EDD213 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C094E9F72093E98500EDD213 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C094EA0B2093E98500EDD213 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C094EA162093E98500EDD213 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C094E9F12093E98500EDD213 = {
+			isa = PBXGroup;
+			children = (
+				C094E9FC2093E98500EDD213 /* iHeartMonitor */,
+				C094EA112093E98500EDD213 /* iHeartMonitorTests */,
+				C094EA1C2093E98500EDD213 /* iHeartMonitorUITests */,
+				C094E9FB2093E98500EDD213 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C094E9FB2093E98500EDD213 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C094E9FA2093E98500EDD213 /* iHeartMonitor.app */,
+				C094EA0E2093E98500EDD213 /* iHeartMonitorTests.xctest */,
+				C094EA192093E98500EDD213 /* iHeartMonitorUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C094E9FC2093E98500EDD213 /* iHeartMonitor */ = {
+			isa = PBXGroup;
+			children = (
+				C094E9FD2093E98500EDD213 /* AppDelegate.swift */,
+				C094E9FF2093E98500EDD213 /* ViewController.swift */,
+				C094EA012093E98500EDD213 /* Main.storyboard */,
+				C094EA042093E98500EDD213 /* Assets.xcassets */,
+				C094EA062093E98500EDD213 /* LaunchScreen.storyboard */,
+				C094EA092093E98500EDD213 /* Info.plist */,
+			);
+			path = iHeartMonitor;
+			sourceTree = "<group>";
+		};
+		C094EA112093E98500EDD213 /* iHeartMonitorTests */ = {
+			isa = PBXGroup;
+			children = (
+				C094EA122093E98500EDD213 /* iHeartMonitorTests.swift */,
+				C094EA142093E98500EDD213 /* Info.plist */,
+			);
+			path = iHeartMonitorTests;
+			sourceTree = "<group>";
+		};
+		C094EA1C2093E98500EDD213 /* iHeartMonitorUITests */ = {
+			isa = PBXGroup;
+			children = (
+				C094EA1D2093E98500EDD213 /* iHeartMonitorUITests.swift */,
+				C094EA1F2093E98500EDD213 /* Info.plist */,
+			);
+			path = iHeartMonitorUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C094E9F92093E98500EDD213 /* iHeartMonitor */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C094EA222093E98500EDD213 /* Build configuration list for PBXNativeTarget "iHeartMonitor" */;
+			buildPhases = (
+				C094E9F62093E98500EDD213 /* Sources */,
+				C094E9F72093E98500EDD213 /* Frameworks */,
+				C094E9F82093E98500EDD213 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = iHeartMonitor;
+			productName = iHeartMonitor;
+			productReference = C094E9FA2093E98500EDD213 /* iHeartMonitor.app */;
+			productType = "com.apple.product-type.application";
+		};
+		C094EA0D2093E98500EDD213 /* iHeartMonitorTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C094EA252093E98500EDD213 /* Build configuration list for PBXNativeTarget "iHeartMonitorTests" */;
+			buildPhases = (
+				C094EA0A2093E98500EDD213 /* Sources */,
+				C094EA0B2093E98500EDD213 /* Frameworks */,
+				C094EA0C2093E98500EDD213 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C094EA102093E98500EDD213 /* PBXTargetDependency */,
+			);
+			name = iHeartMonitorTests;
+			productName = iHeartMonitorTests;
+			productReference = C094EA0E2093E98500EDD213 /* iHeartMonitorTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		C094EA182093E98500EDD213 /* iHeartMonitorUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C094EA282093E98500EDD213 /* Build configuration list for PBXNativeTarget "iHeartMonitorUITests" */;
+			buildPhases = (
+				C094EA152093E98500EDD213 /* Sources */,
+				C094EA162093E98500EDD213 /* Frameworks */,
+				C094EA172093E98500EDD213 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C094EA1B2093E98500EDD213 /* PBXTargetDependency */,
+			);
+			name = iHeartMonitorUITests;
+			productName = iHeartMonitorUITests;
+			productReference = C094EA192093E98500EDD213 /* iHeartMonitorUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C094E9F22093E98500EDD213 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0920;
+				LastUpgradeCheck = 0920;
+				ORGANIZATIONNAME = "Harini Balakrishnan";
+				TargetAttributes = {
+					C094E9F92093E98500EDD213 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+					C094EA0D2093E98500EDD213 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = C094E9F92093E98500EDD213;
+					};
+					C094EA182093E98500EDD213 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = C094E9F92093E98500EDD213;
+					};
+				};
+			};
+			buildConfigurationList = C094E9F52093E98500EDD213 /* Build configuration list for PBXProject "iHeartMonitor" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = C094E9F12093E98500EDD213;
+			productRefGroup = C094E9FB2093E98500EDD213 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C094E9F92093E98500EDD213 /* iHeartMonitor */,
+				C094EA0D2093E98500EDD213 /* iHeartMonitorTests */,
+				C094EA182093E98500EDD213 /* iHeartMonitorUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C094E9F82093E98500EDD213 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C094EA082093E98500EDD213 /* LaunchScreen.storyboard in Resources */,
+				C094EA052093E98500EDD213 /* Assets.xcassets in Resources */,
+				C094EA032093E98500EDD213 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C094EA0C2093E98500EDD213 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C094EA172093E98500EDD213 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C094E9F62093E98500EDD213 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C094EA002093E98500EDD213 /* ViewController.swift in Sources */,
+				C094E9FE2093E98500EDD213 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C094EA0A2093E98500EDD213 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C094EA132093E98500EDD213 /* iHeartMonitorTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C094EA152093E98500EDD213 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C094EA1E2093E98500EDD213 /* iHeartMonitorUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C094EA102093E98500EDD213 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C094E9F92093E98500EDD213 /* iHeartMonitor */;
+			targetProxy = C094EA0F2093E98500EDD213 /* PBXContainerItemProxy */;
+		};
+		C094EA1B2093E98500EDD213 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C094E9F92093E98500EDD213 /* iHeartMonitor */;
+			targetProxy = C094EA1A2093E98500EDD213 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		C094EA012093E98500EDD213 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C094EA022093E98500EDD213 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		C094EA062093E98500EDD213 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C094EA072093E98500EDD213 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		C094EA202093E98500EDD213 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		C094EA212093E98500EDD213 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C094EA232093E98500EDD213 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6246327Y38;
+				INFOPLIST_FILE = iHeartMonitor/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.harini.balakrishnan.iHeartMonitor;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C094EA242093E98500EDD213 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6246327Y38;
+				INFOPLIST_FILE = iHeartMonitor/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.harini.balakrishnan.iHeartMonitor;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		C094EA262093E98500EDD213 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6246327Y38;
+				INFOPLIST_FILE = iHeartMonitorTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.harini.balakrishnan.iHeartMonitorTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/iHeartMonitor.app/iHeartMonitor";
+			};
+			name = Debug;
+		};
+		C094EA272093E98500EDD213 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6246327Y38;
+				INFOPLIST_FILE = iHeartMonitorTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.harini.balakrishnan.iHeartMonitorTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/iHeartMonitor.app/iHeartMonitor";
+			};
+			name = Release;
+		};
+		C094EA292093E98500EDD213 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6246327Y38;
+				INFOPLIST_FILE = iHeartMonitorUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.harini.balakrishnan.iHeartMonitorUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = iHeartMonitor;
+			};
+			name = Debug;
+		};
+		C094EA2A2093E98500EDD213 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6246327Y38;
+				INFOPLIST_FILE = iHeartMonitorUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.harini.balakrishnan.iHeartMonitorUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = iHeartMonitor;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C094E9F52093E98500EDD213 /* Build configuration list for PBXProject "iHeartMonitor" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C094EA202093E98500EDD213 /* Debug */,
+				C094EA212093E98500EDD213 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C094EA222093E98500EDD213 /* Build configuration list for PBXNativeTarget "iHeartMonitor" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C094EA232093E98500EDD213 /* Debug */,
+				C094EA242093E98500EDD213 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C094EA252093E98500EDD213 /* Build configuration list for PBXNativeTarget "iHeartMonitorTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C094EA262093E98500EDD213 /* Debug */,
+				C094EA272093E98500EDD213 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C094EA282093E98500EDD213 /* Build configuration list for PBXNativeTarget "iHeartMonitorUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C094EA292093E98500EDD213 /* Debug */,
+				C094EA2A2093E98500EDD213 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C094E9F22093E98500EDD213 /* Project object */;
+}
