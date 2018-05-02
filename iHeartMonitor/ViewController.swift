@@ -10,19 +10,22 @@ import UIKit
 import HealthKit
 
 class ViewController: UIViewController, UITableViewDataSource {
-
+    
     @IBOutlet weak var tableView: UITableView!
-  
+    
     @IBOutlet weak var lblAge: UILabel!
     @IBOutlet weak var lblBloodgroup: UILabel!
     
     let healthKitStore:HKHealthStore = HKHealthStore()
     
-    var datasource: [String] = ["65", "80"]
+    let beats: [String] = ["65", "80"]
+    let cellReuseIdentifier = "heartrate"
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellReuseIdentifier)
+        tableView.dataSource = self
     }
     
     @IBAction func authorizeKitclicked(_ sender: Any) {
@@ -31,7 +34,14 @@ class ViewController: UIViewController, UITableViewDataSource {
     
     @IBAction func getDetails(_ sender: Any) {
         let (age, bloodtype) = self.readProfile()
-        self.lblAge.text = String(describing: age!)
+        if age != nil {
+            self.lblAge.text = String(describing: age!)
+        } else {
+            self.lblAge.text = "unknown"
+        }
+        
+        print("blood type: \(self.getReadablebloodType(bloodType: bloodtype?.bloodType))")
+        
         self.lblBloodgroup.text = self.getReadablebloodType(bloodType: bloodtype?.bloodType)
     }
     
@@ -81,13 +91,24 @@ class ViewController: UIViewController, UITableViewDataSource {
             let birthDay = try healthKitStore.dateOfBirthComponents()
             let calendar = Calendar.current
             let currentyear = calendar.component(.year, from: Date())
+            let currentmonth = calendar.component(.month, from: Date())
+            
             age = currentyear - birthDay.year!
-        }catch{}
+            if currentmonth < birthDay.month! {
+                age = age! - 1
+            }
+            
+        }catch{
+            print("Error info: \(error)")
+        }
         
         //        Read blood Type
         do{
             bloodType = try healthKitStore.bloodType()
-        }catch{}
+        }catch{
+            print("Error info: \(error)")
+        }
+        
         return(age, bloodType)
     }
     
@@ -102,7 +123,7 @@ class ViewController: UIViewController, UITableViewDataSource {
             HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.distanceWalkingRunning)!,
             HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.heartRate)!,
             HKObjectType.workoutType(),
-        ]
+            ]
         
         let healthKitTypesToWrite: Set<HKSampleType> = []
         
@@ -117,18 +138,26 @@ class ViewController: UIViewController, UITableViewDataSource {
         }
     }
     
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
+    // number of rows in table view
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return datasource.count
+        return self.beats.count
     }
-
+    
+    // create a cell for each table view row
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "heartRate", for: indexPath)
-        print("the data is \(datasource[indexPath.row])")
-        cell.textLabel?.text = datasource[indexPath.row]
+        
+        // create a new cell if needed or reuse an old one
+        let cell:UITableViewCell = self.tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier) as UITableViewCell!
+        
+        // set the text from the data model
+        cell.textLabel?.text = self.beats[indexPath.row]
+        
         return cell
     }
-
+    
+    // method to run when table view cell is tapped
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("You tapped cell number \(indexPath.row).")
+    }
+    
 }
