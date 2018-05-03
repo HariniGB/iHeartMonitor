@@ -18,21 +18,30 @@ class ViewController: UIViewController, UITableViewDataSource {
     
     let healthKitStore:HKHealthStore = HKHealthStore()
     
-    let beats: [String] = ["65", "80"]
+    var beats: [String] = []
     let cellReuseIdentifier = "heartrate"
+    let heartRateUnit = HKUnit(from: "count/min")
+    public let healthStore = HKHealthStore()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let auth: Bool = self.authorizeHealthKitinApp()
+        if auth == true {
+            self.getDetails()
+            observerHeartRateSamples()
+        } else {
+            beats.removeAll()
+            beats.append("Unable to authorize HealthKit")
+        }
+        
         // Do any additional setup after loading the view, typically from a nib.
-        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellReuseIdentifier)
-        tableView.dataSource = self
+        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: self.cellReuseIdentifier)
+        self.tableView.dataSource = self
     }
     
-    @IBAction func authorizeKitclicked(_ sender: Any) {
-        self.authorizeHealthKitinApp()
-    }
     
-    @IBAction func getDetails(_ sender: Any) {
+    
+    func getDetails() {
         let (age, bloodtype) = self.readProfile()
         if age != nil {
             self.lblAge.text = String(describing: age!)
@@ -112,7 +121,7 @@ class ViewController: UIViewController, UITableViewDataSource {
         return(age, bloodType)
     }
     
-    func authorizeHealthKitinApp()
+    func authorizeHealthKitinApp() -> Bool
     {
         
         let healthKitTypesToRead : Set<HKObjectType> = [
@@ -130,12 +139,14 @@ class ViewController: UIViewController, UITableViewDataSource {
         if !HKHealthStore.isHealthDataAvailable()
         {
             print("Error Occured!!!")
-            return
+            return false
         }
         
         healthKitStore.requestAuthorization(toShare: healthKitTypesToWrite, read: healthKitTypesToRead){ (success, error) -> Void in
             print("Was healthkit authorization successful? \(success)")
         }
+        
+        return true
     }
     
     // number of rows in table view
@@ -155,9 +166,57 @@ class ViewController: UIViewController, UITableViewDataSource {
         return cell
     }
     
-    // method to run when table view cell is tapped
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("You tapped cell number \(indexPath.row).")
+    func observerHeartRateSamples() {
+        let heartRateSampleType = HKObjectType.quantityType(forIdentifier: .heartRate)
+        
+        
+        let observerQuery = HKObserverQuery(sampleType: heartRateSampleType!, predicate: nil) { (_, _, error) in
+            if let error = error {
+                print("Error: \(error.localizedDescription)")
+                return
+            }
+            
+            self.fetchLatestHeartRateSample { (sample) in
+                guard let sample = sample else {
+                    return
+                }
+                
+                DispatchQueue.main.async {
+                    let heartRate = sample.quantity.doubleValue(for: self.heartRateUnit)
+                    print("Heart Rate Sample: \(heartRate)")
+                    self.beats.append("\(heartRate)")
+                    self.tableView.reloadData()
+                    print("\(self.beats)")
+                }
+            }
+        }
+        
+        healthStore.execute(observerQuery)
     }
+    
+    func fetchLatestHeartRateSample(completionHandler: @escaping (_ sample: HKQuantitySample?) -> Void) {
+        guard let sampleType = HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.heartRate) else {
+            completionHandler(nil)
+            return
+        }
+        
+        let predicate = HKQuery.predicateForSamples(withStart: Date.distantPast, end: Date(), options: .strictEndDate)
+        let sortDescriptor = NSSortDescriptor(key: HKSampleSortIdentifierStartDate, ascending: false)
+        let query = HKSampleQuery(sampleType: sampleType,
+                                  predicate: predicate,
+                                  limit: Int(HKObjectQueryNoLimit),
+                                  sortDescriptors: [sortDescriptor]) { (_, results, error) in
+                                    if let error = error {
+                                        print("Error: \(error.localizedDescription)")
+                                        return
+                                    }
+                                    
+                                    completionHandler(results?[0] as? HKQuantitySample)
+        }
+        
+        healthStore.execute(query)
+    }
+    
+    
     
 }
