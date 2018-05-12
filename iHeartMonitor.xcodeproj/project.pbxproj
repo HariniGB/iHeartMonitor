@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C086E59F20A7793200ACACAF /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C086E59E20A7793200ACACAF /* UserProfileViewController.swift */; };
+		C086E5A120A7794800ACACAF /* HeartRateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C086E5A020A7794800ACACAF /* HeartRateViewController.swift */; };
+		C086E5A320A77A6F00ACACAF /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C086E5A220A77A6F00ACACAF /* LoginViewController.swift */; };
+		C086E5A520A77A7F00ACACAF /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C086E5A420A77A7F00ACACAF /* RegisterViewController.swift */; };
+		C086E5A720A782D100ACACAF /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C086E5A620A782D100ACACAF /* TabBarViewController.swift */; };
 		C094E9FE2093E98500EDD213 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C094E9FD2093E98500EDD213 /* AppDelegate.swift */; };
 		C094EA002093E98500EDD213 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C094E9FF2093E98500EDD213 /* ViewController.swift */; };
 		C094EA032093E98500EDD213 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C094EA012093E98500EDD213 /* Main.storyboard */; };
@@ -48,6 +53,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		C086E59E20A7793200ACACAF /* UserProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
+		C086E5A020A7794800ACACAF /* HeartRateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartRateViewController.swift; sourceTree = "<group>"; };
+		C086E5A220A77A6F00ACACAF /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		C086E5A420A77A7F00ACACAF /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		C086E5A620A782D100ACACAF /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		C094E9FA2093E98500EDD213 /* iHeartMonitor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iHeartMonitor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C094E9FD2093E98500EDD213 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C094E9FF2093E98500EDD213 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -63,6 +73,7 @@
 		C094EA1F2093E98500EDD213 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C094EA2E2093EF0500EDD213 /* iHeartMonitor.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iHeartMonitor.entitlements; sourceTree = "<group>"; };
 		C0CD03A02098FB210045F1A9 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
+		C0CD03CA209934540045F1A9 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS4.2.sdk/System/Library/Frameworks/HealthKit.framework; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +133,11 @@
 				C094EA042093E98500EDD213 /* Assets.xcassets */,
 				C094EA062093E98500EDD213 /* LaunchScreen.storyboard */,
 				C094EA092093E98500EDD213 /* Info.plist */,
+				C086E59E20A7793200ACACAF /* UserProfileViewController.swift */,
+				C086E5A020A7794800ACACAF /* HeartRateViewController.swift */,
+				C086E5A220A77A6F00ACACAF /* LoginViewController.swift */,
+				C086E5A420A77A7F00ACACAF /* RegisterViewController.swift */,
+				C086E5A620A782D100ACACAF /* TabBarViewController.swift */,
 			);
 			path = iHeartMonitor;
 			sourceTree = "<group>";
@@ -147,6 +163,7 @@
 		C094EA2B2093EF0400EDD213 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C0CD03CA209934540045F1A9 /* HealthKit.framework */,
 				C0CD03A02098FB210045F1A9 /* HealthKit.framework */,
 			);
 			name = Frameworks;
@@ -296,7 +313,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				C094EA002093E98500EDD213 /* ViewController.swift in Sources */,
+				C086E59F20A7793200ACACAF /* UserProfileViewController.swift in Sources */,
 				C094E9FE2093E98500EDD213 /* AppDelegate.swift in Sources */,
+				C086E5A520A77A7F00ACACAF /* RegisterViewController.swift in Sources */,
+				C086E5A720A782D100ACACAF /* TabBarViewController.swift in Sources */,
+				C086E5A320A77A6F00ACACAF /* LoginViewController.swift in Sources */,
+				C086E5A120A7794800ACACAF /* HeartRateViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
