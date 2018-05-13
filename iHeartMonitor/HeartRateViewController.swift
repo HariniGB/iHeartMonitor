@@ -8,14 +8,15 @@
 
 import UIKit
 import HealthKit
+import Charts 
 
 class HeartRateViewController: UIViewController {
 
-    @IBOutlet weak var tableView: UITableView!
+
+    @IBOutlet weak var HeartRateLineChartView: LineChartView!
     
     let healthKitStore:HKHealthStore = HKHealthStore()
-    
-    var beats: [String] = []
+    var beats: [Double] = []
     let cellReuseIdentifier = "heartrate"
     let heartRateUnit = HKUnit(from: "count/min")
     public let healthStore = HKHealthStore()
@@ -27,11 +28,9 @@ class HeartRateViewController: UIViewController {
             observerHeartRateSamples()
         } else {
             beats.removeAll()
-            beats.append("Unable to authorize HealthKit")
+            print("Unable to authorize HealthKit")
         }
-        // Do any additional setup after loading the view, typically from a nib.
-        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: self.cellReuseIdentifier)
-        self.tableView.dataSource = self as? UITableViewDataSource
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -66,24 +65,7 @@ class HeartRateViewController: UIViewController {
         
         return true
     }
-    
-    // number of rows in table view
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.beats.count
-    }
-    
-    // create a cell for each table view row
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        // create a new cell if needed or reuse an old one
-        let cell:UITableViewCell = self.tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier) as UITableViewCell!
-        
-        // set the text from the data model
-        cell.textLabel?.text = self.beats[indexPath.row]
-        
-        return cell
-    }
-    
+   
     func observerHeartRateSamples() {
         let heartRateSampleType = HKObjectType.quantityType(forIdentifier: .heartRate)
         
@@ -102,8 +84,7 @@ class HeartRateViewController: UIViewController {
                 DispatchQueue.main.async {
                     let heartRate = sample.quantity.doubleValue(for: self.heartRateUnit)
                     print("Heart Rate Sample: \(heartRate)")
-                    self.beats.append("\(heartRate)")
-                    self.tableView.reloadData()
+                    self.beats.append(heartRate)
                     print("\(self.beats)")
                 }
             }
@@ -135,6 +116,35 @@ class HeartRateViewController: UIViewController {
         healthStore.execute(query)
     }
     
+    func updateChartData(){
+        
+//        this is the Array that will eventually display on th graph
+        var lineChartEntry = [ChartDataEntry]()
+        
+//   here is the for loop to calcualte the X axis and Y axis
+        for i in 40..<140 {
+            for j in 0..<self.beats.count {
+                let value = ChartDataEntry(x: Double(i), y: self.beats[j])
+                 lineChartEntry.append(value);
+            }
+        }
+   //        Here we convert linechartEntry to a LineChartDataSet
+        let line1 = LineChartDataSet(values: lineChartEntry, label: "Number")
+
+   //  Sets the colour to blue
+        line1.colors = [NSUIColor.blue]
+        
+   //   This is the object that will be added to the chart
+        let data = LineChartData()
+        
+//        Adds the line to the dataset
+        data.addDataSet(line1);
+//        finally = its adds the chart data to the chart and causes an update
+       HeartRateLineChartView.data = data
+        
+//        Here we set the tile for the graph
+        HeartRateLineChartView.chartDescription?.text = "HeartRate Chart"
+    }
     /*
     // MARK: - Navigation
 

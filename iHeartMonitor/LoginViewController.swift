@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Charts
 
 class LoginViewController: UIViewController {
 
@@ -17,6 +18,7 @@ class LoginViewController: UIViewController {
     @IBAction func login(_ sender: UIButton) {
         goToHome()
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -27,7 +29,6 @@ class LoginViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
     
     func goToHome(){
         let popOverVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "tabBarViewController") as! TabBarViewController

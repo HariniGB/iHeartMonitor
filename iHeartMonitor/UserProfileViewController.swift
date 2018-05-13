@@ -16,30 +16,46 @@ class UserProfileViewController: UIViewController {
         let auth: Bool = self.authorizeHealthKitinApp()
         if auth == true {
             self.getDetails()
-           
-        } else {
-            beats.removeAll()
-            beats.append("Unable to authorize HealthKit")
-        }
-       
+        }       
     }
     
+    @IBOutlet weak var lblName: UILabel!
+    @IBOutlet weak var lblGender: UILabel!
+    @IBOutlet weak var lblWeight: UILabel!
+    @IBOutlet weak var lblHeight: UILabel!
     @IBOutlet weak var lblAge: UILabel!
     @IBOutlet weak var lblBloodgroup: UILabel!
     
     let healthKitStore:HKHealthStore = HKHealthStore()
-    
-    var beats: [String] = []
-    let cellReuseIdentifier = "heartrate"
-    let heartRateUnit = HKUnit(from: "count/min")
     public let healthStore = HKHealthStore()
     
     func getDetails() {
-        let (age, bloodtype) = self.readProfile()
+        let (age, bloodtype, gender) = self.readProfile()
+        //        if name != nil  {
+        //            self.lblName.text = String(describing: age!)
+        //        } else {
+        //            self.lblName.text = "User Details"
+        //        }
         if age != nil {
             self.lblAge.text = String(describing: age!)
         } else {
             self.lblAge.text = "unknown"
+        }
+        if gender != nil  {
+            switch gender?.biologicalSex {
+            case .female?:
+                self.lblGender.text =  "Female"
+            case .male?:
+                self.lblGender.text =  "Male"
+            case .none:
+                self.lblGender.text =  "unknown"
+            case .some(.notSet):
+                self.lblGender.text =  "unknown"
+            case .some(.other):
+                self.lblGender.text =  "unknown"
+            }
+        } else {
+            self.lblGender.text = "unknown"
         }
         
         print("blood type: \(self.getReadablebloodType(bloodType: bloodtype?.bloodType))")
@@ -84,9 +100,11 @@ class UserProfileViewController: UIViewController {
     }
     
     
-    func readProfile() -> ( age:Int?, bloodtype:HKBloodTypeObject?){
+    func readProfile() -> ( age:Int?, bloodtype:HKBloodTypeObject?,  gender:HKBiologicalSexObject?){
+        //        var name:String?
         var age:Int?
         var bloodType:HKBloodTypeObject?
+        var gender:HKBiologicalSexObject?
         
         //        Read Age
         do{
@@ -103,6 +121,13 @@ class UserProfileViewController: UIViewController {
         }catch{
             print("Error info: \(error)")
         }
+        // Read user name
+        //        do{
+        //            name = try healthKitStore.
+        //        }catch{
+        //            print("Error info: \(error)")
+        //        }
+        //        //        Read blood Type
         
         //        Read blood Type
         do{
@@ -110,8 +135,13 @@ class UserProfileViewController: UIViewController {
         }catch{
             print("Error info: \(error)")
         }
-        
-        return(age, bloodType)
+        //        Read Gender Type
+        do{
+            gender = try healthKitStore.biologicalSex()
+        }catch{
+            print("Error info: \(error)")
+        }
+        return(age, bloodType, gender)
     }
     
     func authorizeHealthKitinApp() -> Bool
@@ -141,6 +171,87 @@ class UserProfileViewController: UIViewController {
         
         return true
     }
+    
+    
+    func getMostRecentSample(for sampleType: HKSampleType,
+                             completion: @escaping (HKQuantitySample?, Error?) -> Swift.Void) {
+        
+        //1. Use HKQuery to load the most recent samples.
+        let mostRecentPredicate = HKQuery.predicateForSamples(withStart: Date.distantPast,
+                                                              end: Date(),
+                                                              options: .strictEndDate)
+        
+        let sortDescriptor = NSSortDescriptor(key: HKSampleSortIdentifierStartDate,
+                                              ascending: false)
+        
+        let limit = 1
+        
+        let sampleQuery = HKSampleQuery(sampleType: sampleType,
+                                        predicate: mostRecentPredicate,
+                                        limit: limit,
+                                        sortDescriptors: [sortDescriptor]) { (query, samples, error) in
+                                            
+                                            //2. Always dispatch to the main thread when complete.
+                                            DispatchQueue.main.async {
+                                                
+                                                guard let samples = samples,
+                                                    let mostRecentSample = samples.first as? HKQuantitySample else {
+                                                        
+                                                        completion(nil, error)
+                                                        return
+                                                }
+                                                
+                                                completion(mostRecentSample, nil)
+                                            }
+        }
+        
+        HKHealthStore().execute(sampleQuery)
+    }
+    
+    func loadAndDisplayMostRecentWeight(){
+        //1. Use HealthKit to create the Height Sample Type
+        guard let height = HKSampleType.quantityType(forIdentifier: .height) else {
+            print("Height Sample Type is no longer available in HealthKit")
+            return
+        }
+        self.getMostRecentSample(for: height) {
+            (sample, error) in
+            guard let sample = sample else {
+                if let error = error {
+                    print("Error info: \(error)")
+                }
+                return
+            }
+            
+            //2. Convert the height sample to meters, save to the profile model,
+            //   and update the user interface.
+            let heightInMeters = sample.quantity.doubleValue(for: HKUnit.meter())
+            print("Height is: \(heightInMeters)")
+            self.lblHeight.text = String(describing: heightInMeters)
+        }
+        
+        guard let weight = HKSampleType.quantityType(forIdentifier: .bodyMass) else {
+            print("Body Mass Sample Type is no longer available in HealthKit")
+            return
+        }
+        
+        self.getMostRecentSample(for: weight) {
+            (sample, error) in
+            
+            guard let sample = sample else {
+                
+                if let error = error {
+                    print("Error info: \(error)")
+                }
+                return
+            }
+            
+            let weightInKilograms = sample.quantity.doubleValue(for: HKUnit.gramUnit(with: .kilo))
+            print("Weight is: \(weightInKilograms)")
+            self.lblWeight.text = String(describing: weightInKilograms)
+        }
+    }
+    
     
     /*
     // MARK: - Navigation
