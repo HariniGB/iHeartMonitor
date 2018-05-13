@@ -13,9 +13,8 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var userName: UITextField!
     @IBOutlet weak var userPassword: UITextField!
     
-    @IBAction func cancel(_ sender: Any) {
-    }
-    @IBAction func login(_ sender: Any) {
+
+    @IBAction func login(_ sender: UIButton) {
         goToHome()
     }
     override func viewDidLoad() {

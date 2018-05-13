@@ -155,8 +155,7 @@
                                             <color key="titleColor" red="0.50196081400000003" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
-                                            <action selector="cancel:" destination="n7L-iA-yzr" eventType="touchUpInside" id="6gs-Md-PAm"/>
-                                            <segue destination="BYZ-38-t0r" kind="show" id="EdI-TM-2eh"/>
+                                            <segue destination="BYZ-38-t0r" kind="show" id="4Ed-xW-pGF"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mW1-i8-1Gk">
@@ -402,7 +401,7 @@
         <!--Tab Bar View Controller-->
         <scene sceneID="tiI-TU-nmz">
             <objects>
-                <tabBarController id="Yzi-uK-LP8" customClass="TabBarViewController" customModule="iHeartMonitor" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="tabBarViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Yzi-uK-LP8" customClass="TabBarViewController" customModule="iHeartMonitor" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="Tea-t1-fsh">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -481,7 +480,7 @@
                                         </state>
                                         <connections>
                                             <action selector="cancel:" destination="lkS-C3-KOR" eventType="touchUpInside" id="nGK-UL-LJX"/>
-                                            <segue destination="BYZ-38-t0r" kind="show" id="UgM-bV-qrY"/>
+                                            <segue destination="BYZ-38-t0r" kind="show" id="9EF-K7-AAo"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mqA-Zj-QoB">
@@ -524,7 +523,6 @@
                         <viewLayoutGuide key="safeArea" id="7ne-jN-zpV"/>
                     </view>
                     <connections>
-                        <outlet property="cancel" destination="8hg-5o-JMb" id="03Q-nI-7fg"/>
                         <outlet property="userName" destination="oos-AV-7uR" id="Obr-YS-T7h"/>
                         <outlet property="userPassword" destination="nWQ-ym-4Nu" id="y0L-v2-LG1"/>
                     </connections>
@@ -541,6 +539,6 @@
         <image name="userProfile" width="16" height="16"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="EdI-TM-2eh"/>
+        <segue reference="9EF-K7-AAo"/>
     </inferredMetricsTieBreakers>
 </document>
