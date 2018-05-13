@@ -15,9 +15,9 @@ class HeartRateViewController: UIViewController {
 
     @IBOutlet weak var HeartRateLineChartView: LineChartView!
     
-    let healthKitStore:HKHealthStore = HKHealthStore()
     var beats: [Double] = []
     let cellReuseIdentifier = "heartrate"
+    var dataEntries: [ChartDataEntry] = []
     let heartRateUnit = HKUnit(from: "count/min")
     public let healthStore = HKHealthStore()
     
@@ -26,11 +26,11 @@ class HeartRateViewController: UIViewController {
         let auth: Bool = self.authorizeHealthKitinApp()
         if auth == true {
             observerHeartRateSamples()
+            updateChartData()
         } else {
             beats.removeAll()
             print("Unable to authorize HealthKit")
         }
-        
     }
     
     override func didReceiveMemoryWarning() {
@@ -42,11 +42,6 @@ class HeartRateViewController: UIViewController {
     {
         
         let healthKitTypesToRead : Set<HKObjectType> = [
-            HKObjectType.characteristicType(forIdentifier: HKCharacteristicTypeIdentifier.dateOfBirth)!,
-            HKObjectType.characteristicType(forIdentifier: HKCharacteristicTypeIdentifier.bloodType)!,
-            HKObjectType.characteristicType(forIdentifier: HKCharacteristicTypeIdentifier.biologicalSex)!,
-            HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.activeEnergyBurned)!,
-            HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.distanceWalkingRunning)!,
             HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.heartRate)!,
             HKObjectType.workoutType(),
             ]
@@ -59,7 +54,7 @@ class HeartRateViewController: UIViewController {
             return false
         }
         
-        healthKitStore.requestAuthorization(toShare: healthKitTypesToWrite, read: healthKitTypesToRead){ (success, error) -> Void in
+       healthStore.requestAuthorization(toShare: healthKitTypesToWrite, read: healthKitTypesToRead){ (success, error) -> Void in
             print("Was healthkit authorization successful? \(success)")
         }
         
@@ -75,21 +70,19 @@ class HeartRateViewController: UIViewController {
                 print("Error: \(error.localizedDescription)")
                 return
             }
-            
             self.fetchLatestHeartRateSample { (sample) in
                 guard let sample = sample else {
+                    print("============================")
                     return
                 }
-                
-                DispatchQueue.main.async {
+//                DispatchQueue.main.async {
                     let heartRate = sample.quantity.doubleValue(for: self.heartRateUnit)
                     print("Heart Rate Sample: \(heartRate)")
                     self.beats.append(heartRate)
                     print("\(self.beats)")
-                }
+//                }
             }
         }
-        
         healthStore.execute(observerQuery)
     }
     
@@ -112,33 +105,35 @@ class HeartRateViewController: UIViewController {
                                     
                                     completionHandler(results?[0] as? HKQuantitySample)
         }
-        
-        healthStore.execute(query)
+       healthStore.execute(query)
     }
     
     func updateChartData(){
-        
 //        this is the Array that will eventually display on th graph
-        var lineChartEntry = [ChartDataEntry]()
+//        let hearRateRange = [60, 70, 80, 90, 100]
+//        let hourly = ["6.00 PM", "6.05 PM", "6.10 PM", "6.15 PM", "6.20 PM", "6.25 PM", "6.30 PM", "6.35 PM", "6.40 PM", "6.45 PM", "6.50 PM", "6.55 PM", "7.00 PM"]
+//        let day = ["12 AM"," 1 AM","2 AM","3 AM","4 AM","5 AM","6 AM", "7 AM","8 AM","9 AM","10 AM", "11 AM", "12 PM"," 1 PM","2 PM","3 PM","4 PM","5 PM","6 PM", "7 PM","8 PM","9 PM","10 PM", "11 PM" ]
+//        let week = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+        let month = ["Week 1", "Week 2", "Week 3", "Week 4"]
+//        let year = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "July","Aug", "Sep", "Nov", "Dec"]
         
 //   here is the for loop to calcualte the X axis and Y axis
-        for i in 40..<140 {
-            for j in 0..<self.beats.count {
-                let value = ChartDataEntry(x: Double(i), y: self.beats[j])
-                 lineChartEntry.append(value);
-            }
+        
+        for i in 0..<month.count{
+            print(self.beats)
+            let dataEntry = ChartDataEntry(x: Double(i), y: Double(i))
+            self.dataEntries.append(dataEntry)
         }
+        
    //        Here we convert linechartEntry to a LineChartDataSet
-        let line1 = LineChartDataSet(values: lineChartEntry, label: "Number")
-
+        let line1 = LineChartDataSet(values: self.dataEntries, label: "Number")
+        
    //  Sets the colour to blue
         line1.colors = [NSUIColor.blue]
-        
+
    //   This is the object that will be added to the chart
-        let data = LineChartData()
-        
-//        Adds the line to the dataset
-        data.addDataSet(line1);
+        let data = LineChartData(dataSet: line1)
+    
 //        finally = its adds the chart data to the chart and causes an update
        HeartRateLineChartView.data = data
         
