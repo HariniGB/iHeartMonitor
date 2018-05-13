@@ -1,27 +1,21 @@
 //
-//  LoginViewController.swift
+//  NavigationViewController.swift
 //  iHeartMonitor
 //
-//  Created by Harini Balakrishnan on 5/12/18.
+//  Created by Harini Balakrishnan on 5/13/18.
 //  Copyright © 2018 Harini Balakrishnan. All rights reserved.
 //
 
 import UIKit
-import Charts
 
-class LoginViewController: UIViewController {
+class NavigationViewController: UINavigationController {
 
-    @IBOutlet weak var userName: UITextField!
-    @IBOutlet weak var userPassword: UITextField!
-
-    @IBAction func login(_ sender: UIButton) {
-        goToHome()
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
+//        let logo = UIImage(named: "appIcon.png")
+//        self.navigationItem.titleView = UIImageView(image: image)
+//        self.navigationController?.title = "iHeart Monitor"
     }
 
     override func didReceiveMemoryWarning() {
@@ -29,13 +23,6 @@ class LoginViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func goToHome(){
-        let popOverVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "tabBarViewController") as! TabBarViewController
-        self.addChildViewController(popOverVC)
-        popOverVC.view.frame = self.view.frame
-        self.view.addSubview(popOverVC.view)
-        popOverVC.didMove(toParentViewController: self)
-    }
 
     /*
     // MARK: - Navigation

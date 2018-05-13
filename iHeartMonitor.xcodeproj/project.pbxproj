@@ -23,6 +23,7 @@
 		C094EA1E2093E98500EDD213 /* iHeartMonitorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C094EA1D2093E98500EDD213 /* iHeartMonitorUITests.swift */; };
 		C0CD03A12098FB210045F1A9 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0CD03A02098FB210045F1A9 /* HealthKit.framework */; };
 		C0F6D45320A80F3D00B4F24D /* Charts.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = C0F6D45220A80F3D00B4F24D /* Charts.xcconfig */; };
+		C0F6D45B20A8AD3500B4F24D /* NavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F6D45A20A8AD3500B4F24D /* NavigationViewController.swift */; };
 		FE7D02F81879E0B86FB8994D /* Pods_iHeartMonitorUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF69C08A2B12636306E042CA /* Pods_iHeartMonitorUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -96,6 +97,7 @@
 		C0CD03A02098FB210045F1A9 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		C0CD03CA209934540045F1A9 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS4.2.sdk/System/Library/Frameworks/HealthKit.framework; sourceTree = DEVELOPER_DIR; };
 		C0F6D45220A80F3D00B4F24D /* Charts.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Charts.xcconfig; sourceTree = "<group>"; };
+		C0F6D45A20A8AD3500B4F24D /* NavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationViewController.swift; sourceTree = "<group>"; };
 		D40AE09DD1CB2E93F43E9870 /* Pods-iHeartMonitorUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iHeartMonitorUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-iHeartMonitorUITests/Pods-iHeartMonitorUITests.release.xcconfig"; sourceTree = "<group>"; };
 		FE4FBE7483E5B5CA457A4C3D /* Pods-iHeartMonitor.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iHeartMonitor.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iHeartMonitor/Pods-iHeartMonitor.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -180,6 +182,7 @@
 				C086E5A220A77A6F00ACACAF /* LoginViewController.swift */,
 				C086E5A420A77A7F00ACACAF /* RegisterViewController.swift */,
 				C086E5A620A782D100ACACAF /* TabBarViewController.swift */,
+				C0F6D45A20A8AD3500B4F24D /* NavigationViewController.swift */,
 			);
 			path = iHeartMonitor;
 			sourceTree = "<group>";
@@ -438,6 +441,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C0F6D45B20A8AD3500B4F24D /* NavigationViewController.swift in Sources */,
 				C094EA002093E98500EDD213 /* ViewController.swift in Sources */,
 				C086E59F20A7793200ACACAF /* UserProfileViewController.swift in Sources */,
 				C094E9FE2093E98500EDD213 /* AppDelegate.swift in Sources */,
