@@ -8,6 +8,7 @@
 
 import UIKit
 import Charts
+import FirebaseAuth
 
 class LoginViewController: UIViewController {
 
@@ -15,8 +16,22 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var userPassword: UITextField!
 
     @IBAction func login(_ sender: UIButton) {
-        goToHome()
+        if let email = userName.text, let password = userPassword.text{
+            
+            Auth.auth().signIn(withEmail: email, password:password, completion:{(user, error) in
+                if let firebaseError = error{
+                    print(firebaseError.localizedDescription)
+                    return
+                }
+                //self.presentLoggedInScreen()
+                //print("sucess")
+                self.goToHome()
+            })
+            
+        }
+        
     }
+
     
     override func viewDidLoad() {
         super.viewDidLoad()

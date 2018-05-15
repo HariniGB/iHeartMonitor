@@ -8,6 +8,7 @@
 
 import UIKit
 import HealthKit
+import FirebaseAuth
 
 class UserProfileViewController: UIViewController {
 
@@ -18,6 +19,20 @@ class UserProfileViewController: UIViewController {
             self.getDetails()
         }       
     }
+    
+    
+    @IBAction func Logout(_ sender: Any) {
+        
+            do{
+                try Auth.auth().signOut()
+                dismiss(animated: true, completion: nil)
+                
+            } catch {
+                print("Problem loggin out")
+            }
+        }
+    
+    
     
     @IBOutlet weak var lblName: UILabel!
     @IBOutlet weak var lblGender: UILabel!

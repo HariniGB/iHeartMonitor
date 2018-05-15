@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class RegisterViewController: UIViewController {
 
@@ -20,8 +21,22 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var userName: UITextField!
     
     @IBAction func register(_ sender: Any) {
-        goToHome()
+        if let email = userName.text, let password = userPassword.text{
+            
+            Auth.auth().createUser(withEmail: email, password:password, completion:{(user, error) in
+                if let firebaseError = error{
+                    print(firebaseError.localizedDescription)
+                    return
+                }
+                //self.presentLoggedInScreen()
+                //print("sucess")
+                self.goToHome()
+            })
+            
+        }
+        
     }
+
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
