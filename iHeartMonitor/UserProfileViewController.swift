@@ -9,30 +9,39 @@
 import UIKit
 import HealthKit
 import FirebaseAuth
+import UserNotifications
+
+
+
+
 
 class UserProfileViewController: UIViewController {
+    
+    
+//logout
+    @IBAction func Logout(_ sender: Any) {
+        
+        try! Auth.auth().signOut()
+        if let storyboard = self.storyboard {
+            let vc = storyboard.instantiateViewController(withIdentifier: "ViewController") as! UINavigationController
+            self.present(vc, animated: false, completion: nil)
+        }
+       
+    }
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         let auth: Bool = self.authorizeHealthKitinApp()
         if auth == true {
             self.getDetails()
-        }       
+        }
+       
     }
     
     
-    @IBAction func Logout(_ sender: Any) {
-        
-            do{
-                try Auth.auth().signOut()
-                dismiss(animated: true, completion: nil)
-                
-            } catch {
-                print("Problem loggin out")
-            }
-        }
     
-    
+    //
     
     @IBOutlet weak var lblName: UILabel!
     @IBOutlet weak var lblGender: UILabel!
@@ -159,6 +168,8 @@ class UserProfileViewController: UIViewController {
         return(age, bloodType, gender)
     }
     
+    
+        
     func authorizeHealthKitinApp() -> Bool
     {
         
@@ -170,6 +181,8 @@ class UserProfileViewController: UIViewController {
             HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.distanceWalkingRunning)!,
             HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.heartRate)!,
             HKObjectType.workoutType(),
+            HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.stepCount)!
+            
             ]
         
         let healthKitTypesToWrite: Set<HKSampleType> = []
@@ -267,8 +280,7 @@ class UserProfileViewController: UIViewController {
         }
     }
     
-    
-    /*
+        /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -277,4 +289,6 @@ class UserProfileViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    
 }

@@ -8,10 +8,14 @@
 
 import UIKit
 import HealthKit
-import Charts 
+import Charts
+import  UserNotifications
 
 class HeartRateViewController: UIViewController {
 
+    
+    
+    
 
     @IBOutlet weak var HeartRateLineChartView: LineChartView!
     
@@ -21,16 +25,29 @@ class HeartRateViewController: UIViewController {
     let heartRateUnit = HKUnit(from: "count/min")
     public let healthStore = HKHealthStore()
     
+    // for heartrate query
+    let health: HKHealthStore = HKHealthStore()
+    //let heartRateUnit:HKUnit = HKUnit(from : "count/min")
+    let heartRateType:HKQuantityType   = HKQuantityType.quantityType(forIdentifier: HKQuantityTypeIdentifier.heartRate)!
+    var heartRateQuery:HKSampleQuery?
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let auth: Bool = self.authorizeHealthKitinApp()
         if auth == true {
             observerHeartRateSamples()
             updateChartData()
+            
         } else {
             beats.removeAll()
             print("Unable to authorize HealthKit")
         }
+        //Notification
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge], completionHandler: {didAllow, error in
+            
+        })
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -61,7 +78,7 @@ class HeartRateViewController: UIViewController {
         return true
     }
    
-    func observerHeartRateSamples() {
+   func observerHeartRateSamples() {
         let heartRateSampleType = HKObjectType.quantityType(forIdentifier: .heartRate)
         
         
@@ -140,6 +157,181 @@ class HeartRateViewController: UIViewController {
 //        Here we set the tile for the graph
         HeartRateLineChartView.chartDescription?.text = "HeartRate Chart"
     }
+    
+    
+    
+    
+    @IBAction func HeartRateNotification(_ sender: Any) {
+        
+        getAVGHeartRate{ (beats) in
+            //Notify
+            
+            for ibeats in beats{
+                
+                switch true{
+                case ibeats < 60.00:
+                    //print ("less")
+                    
+                    
+                    let content = UNMutableNotificationContent()
+                    
+                    //adding title, subtitle, body and badge
+                    content.title = "Alert"
+                    content.subtitle = "Abnormality in heart beat reported"
+                    content.body = "Your heart beat patterns is seem abnormal, if this is not the first time you are seeing this, probably a good time to get a physical"
+                    content.badge = 1
+                    
+                    //getting the notification trigger
+                    //it will be called after 5 seconds
+                    let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+                    
+                    //getting the notification request
+                    let request = UNNotificationRequest(identifier: "SimplifiedIOSNotification", content: content, trigger: trigger)
+                    
+                    //adding the notification to notification center
+                    UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+                    
+                case ibeats > 100.00:
+                    //print ("more")
+                    
+                    
+                    let content = UNMutableNotificationContent()
+                    
+                    //adding title, subtitle, body and badge
+                    content.title = "Alert"
+                    content.subtitle = "Abnormality in heart beat reported"
+                    content.body = "Your heart beat patterns is seem abnormal, if this is not the first time you are seeing this, probably a good time to get a physical"
+                    content.badge = 1
+                    
+                    //getting the notification trigger
+                    //it will be called after 5 seconds
+                    let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+                    
+                    //getting the notification request
+                    let request = UNNotificationRequest(identifier: "SimplifiedIOSNotification", content: content, trigger: trigger)
+                    
+                    //foreground noti (remove this to make backgroung notification)
+                    UNUserNotificationCenter.current().delegate = (self as! UNUserNotificationCenterDelegate)
+                    
+                    //adding the notification to notification center
+                    UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+                    
+                default:
+                    //print("Normal")
+                    
+                    let content = UNMutableNotificationContent()
+                    
+                    //adding title, subtitle, body and badge
+                    content.title = "Normal"
+                    content.subtitle = "Heart Beat Patterns"
+                    content.body = ""
+                    content.badge = 1
+                    
+                    //getting the notification trigger
+                    //it will be called after 5 seconds
+                    let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+                    
+                    //getting the notification request
+                    let request = UNNotificationRequest(identifier: "SimplifiedIOSNotification", content: content, trigger: trigger)
+                    
+                    //adding the notification to notification center
+                    UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+                }
+                
+            }// Heart rate notification end
+            
+        }
+                
+    }
+    
+    
+    //Function to find average heart rate
+    func getAVGHeartRate(completion: @escaping (_ array: [Double]) -> Void) {
+        
+        var typeHeart = HKQuantityType.quantityType(forIdentifier: .heartRate)
+        var startDate = Date() - 7 * 24 * 60 * 60 // start date is a week
+        var predicate: NSPredicate? = HKQuery.predicateForSamples(withStart: startDate, end: Date(), options: HKQueryOptions.strictEndDate)
+        
+        var squery = HKStatisticsQuery(quantityType: typeHeart!, quantitySamplePredicate: predicate, options: .discreteAverage, completionHandler: {(query: HKStatisticsQuery,result: HKStatistics?, error: Error?) -> Void in
+            DispatchQueue.main.async(execute: {() -> Void in
+                var quantity: HKQuantity? = result?.averageQuantity()
+                var beats: Double? = quantity?.doubleValue(for: HKUnit.count().unitDivided(by: HKUnit.minute()))
+               //print("got")
+            })
+        })
+        healthStore.execute(squery)
+    }
+        
+        
+        
+    
+
+    
+    //step function notification
+    @IBAction func getTodaysSteps(_ sender: Any) {
+        
+        getTodaysSteps { (result) in
+            print("\(result)")
+            DispatchQueue.main.async {
+                //self.totalSteps.text = "\(result)"
+                
+                if result < 500 {
+                    let content = UNMutableNotificationContent()
+                    
+                    //adding title, subtitle, body and badge
+                    content.title = "Alert"
+                    content.subtitle = "Less Activity"
+                    content.body = "Please go out for a walk"
+                    content.badge = 1
+                    
+                    //getting the notification trigger
+                    //it will be called after 5 seconds
+                    let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+                    
+                    //getting the notification request
+                    let request = UNNotificationRequest(identifier: "SimplifiedIOSNotification", content: content, trigger: trigger)
+                    
+                    //foreground notification (remove this to make backgroung notification)
+                    UNUserNotificationCenter.current().delegate = ( self as? UNUserNotificationCenterDelegate)
+                    
+                    //adding the notification to notification center
+                    UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+                   
+                }
+            }
+        }
+    }
+    
+    
+    //step function
+    func getTodaysSteps(completion: @escaping (Double) -> Void) {
+        
+        let stepsQuantityType = HKQuantityType.quantityType(forIdentifier: .stepCount)!
+        
+        let now = Date()
+        let startOfDay = Calendar.current.startOfDay(for: now)
+        let predicate = HKQuery.predicateForSamples(withStart: startOfDay, end: now, options: .strictStartDate)
+        
+        let query = HKStatisticsQuery(quantityType: stepsQuantityType, quantitySamplePredicate: predicate, options: .cumulativeSum) { (_, result, error) in
+            var resultCount = 0.0
+            guard let result = result else {
+                print("Failed to fetch steps rate")
+                completion(resultCount)
+                return
+            }
+            if let sum = result.sumQuantity() {
+                resultCount = sum.doubleValue(for: HKUnit.count())
+            }
+            
+            DispatchQueue.main.async {
+                completion(resultCount)
+            }
+        }
+        healthStore.execute(query)
+         //print("sucess")
+    }
+    
+    
     /*
     // MARK: - Navigation
 
@@ -151,3 +343,4 @@ class HeartRateViewController: UIViewController {
     */
 
 }
+
