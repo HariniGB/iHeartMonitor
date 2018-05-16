@@ -8,18 +8,24 @@
 
 import UIKit
 import Charts
+import Firebase
 import FirebaseAuth
+import GoogleSignIn
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, GIDSignInUIDelegate {
 
     @IBOutlet weak var userName: UITextField!
     @IBOutlet weak var userPassword: UITextField!
 
+  
     @IBAction func login(_ sender: UIButton) {
         if let email = userName.text, let password = userPassword.text{
             
             Auth.auth().signIn(withEmail: email, password:password, completion:{(user, error) in
                 if let firebaseError = error{
+                    let alertView = UIAlertController(title: "Invalid Email or Password", message: firebaseError.localizedDescription, preferredStyle: .alert)
+                    alertView.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+                    self.present(alertView, animated:true, completion:nil)
                     print(firebaseError.localizedDescription)
                     return
                 }
@@ -31,14 +37,28 @@ class LoginViewController: UIViewController {
         }
         
     }
-
-    
+    var handle: AuthStateDidChangeListenerHandle?
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        GIDSignIn.sharedInstance().uiDelegate = self as GIDSignInUIDelegate
+        GIDSignIn.sharedInstance().signInSilently()
+        handle = Auth.auth().addStateDidChangeListener() { (auth, user) in
+            if user != nil {
+            MeasurementHelper.sendLoginEvent()
+            self.goToHome()
+            }
+        }
         // Do any additional setup after loading the view.
     }
+   
+    deinit {
+        if let handle = handle {
+            Auth.auth().removeStateDidChangeListener(handle)
+        }
+    }
+    
 
+    @IBOutlet weak var signInButton: GIDSignInButton!
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -51,7 +71,7 @@ class LoginViewController: UIViewController {
         self.view.addSubview(popOverVC.view)
         popOverVC.didMove(toParentViewController: self)
     }
-
+    
     /*
     // MARK: - Navigation
 

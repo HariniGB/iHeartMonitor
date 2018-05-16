@@ -19,6 +19,12 @@ class UserProfileViewController: UIViewController {
             self.getDetails()
         }       
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // Hide the navigation bar on the this view controller
+        self.navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
     
     
     @IBAction func Logout(_ sender: Any) {
@@ -26,7 +32,9 @@ class UserProfileViewController: UIViewController {
             do{
                 try Auth.auth().signOut()
                 dismiss(animated: true, completion: nil)
-                
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let secondViewController = storyboard.instantiateViewController(withIdentifier: "HomePage") as UIViewController
+                self.present(secondViewController, animated: true, completion: nil)
             } catch {
                 print("Problem loggin out")
             }

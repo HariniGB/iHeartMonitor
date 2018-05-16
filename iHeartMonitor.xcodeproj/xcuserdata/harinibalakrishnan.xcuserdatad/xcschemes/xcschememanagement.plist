@@ -7,7 +7,7 @@
 		<key>iHeartMonitor.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>4</integer>
+			<integer>15</integer>
 		</dict>
 		<key>iHeartMonitorWatchApp (Notification).xcscheme</key>
 		<dict>
@@ -28,6 +28,24 @@
 		<dict>
 			<key>orderHint</key>
 			<integer>1</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>C094E9F92093E98500EDD213</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C094EA0D2093E98500EDD213</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C094EA182093E98500EDD213</key>
+		<dict>
+			<key>primary</key>
+			<true/>
 		</dict>
 	</dict>
 </dict>

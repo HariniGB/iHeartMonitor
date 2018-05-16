@@ -25,6 +25,9 @@ class RegisterViewController: UIViewController {
             
             Auth.auth().createUser(withEmail: email, password:password, completion:{(user, error) in
                 if let firebaseError = error{
+                    let alertView = UIAlertController(title: "Invalid Email or Password", message: firebaseError.localizedDescription, preferredStyle: .alert)
+                    alertView.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+                    self.present(alertView, animated:true, completion:nil)
                     print(firebaseError.localizedDescription)
                     return
                 }
