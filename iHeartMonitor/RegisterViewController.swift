@@ -9,12 +9,13 @@
 import UIKit
 import FirebaseAuth
 
-class RegisterViewController: UIViewController {
+class RegisterViewController: UIViewController, UITextFieldDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        self.userName.delegate = self
+        self.userPassword.delegate = self
     }
 
     @IBOutlet weak var userPassword: UITextField!
@@ -50,15 +51,15 @@ class RegisterViewController: UIViewController {
         popOverVC.didMove(toParentViewController: self)
     }
 
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func userNameShouldReturn(_ userName: UITextField) -> Bool {
+        userName.resignFirstResponder()
+        return true
     }
-    */
+    
+    func userPasswordShouldReturn(_ userPassword: UITextField) -> Bool {
+        userPassword.resignFirstResponder()
+        return true
+        
+    }
 
 }

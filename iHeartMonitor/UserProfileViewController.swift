@@ -45,6 +45,8 @@ class UserProfileViewController: UIViewController {
     public let healthStore = HKHealthStore()
     
     func getDetails() {
+        let username = UIDevice.current.name
+        print("User name is \(username)")
         let (age, bloodtype, gender) = self.readProfile()
         //        if name != nil  {
         //            self.lblName.text = String(describing: age!)
