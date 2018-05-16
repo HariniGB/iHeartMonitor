@@ -10,7 +10,7 @@ import UIKit
 import Charts
 import FirebaseAuth
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var userName: UITextField!
     @IBOutlet weak var userPassword: UITextField!
@@ -35,7 +35,8 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.userName.delegate = self
+        self.userPassword.delegate = self
         // Do any additional setup after loading the view.
     }
 
@@ -61,5 +62,20 @@ class LoginViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
+    func userNameShouldReturn(_ userName: UITextField) -> Bool {
+        userName.resignFirstResponder()
+        return true
+    }
+    
+    func userPasswordShouldReturn(_ userPassword: UITextField) -> Bool {
+        userPassword.resignFirstResponder()
+        return true
+    
+    }
 
 }
