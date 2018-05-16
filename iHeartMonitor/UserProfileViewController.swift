@@ -39,6 +39,12 @@ class UserProfileViewController: UIViewController {
        
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // Hide the navigation bar on the this view controller
+        self.navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
     
     
     //
@@ -55,13 +61,14 @@ class UserProfileViewController: UIViewController {
     
     func getDetails() {
         let username = UIDevice.current.name
-        print("User name is \(username)")
+//      let username = Auth.auth().currentUser?.displayName
+        print("User name is \(String(describing: username))")
         let (age, bloodtype, gender) = self.readProfile()
-        //        if name != nil  {
-        //            self.lblName.text = String(describing: age!)
-        //        } else {
-        //            self.lblName.text = "User Details"
-        //        }
+                if !username.isEmpty {
+                    self.lblName.text = username
+                } else {
+                    self.lblName.text = "User Details"
+                }
         if age != nil {
             self.lblAge.text = String(describing: age!)
         } else {
@@ -147,14 +154,6 @@ class UserProfileViewController: UIViewController {
         }catch{
             print("Error info: \(error)")
         }
-        // Read user name
-        //        do{
-        //            name = try healthKitStore.
-        //        }catch{
-        //            print("Error info: \(error)")
-        //        }
-        //        //        Read blood Type
-        
         //        Read blood Type
         do{
             bloodType = try healthKitStore.bloodType()

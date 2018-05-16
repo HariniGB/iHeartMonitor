@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		2A1BA2EA258F0DF9D4C8949D /* Pods_iHeartMonitorTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18927A6D9E704EEB437AA240 /* Pods_iHeartMonitorTests.framework */; };
 		7F16544ECD7474792D489DED /* Pods_iHeartMonitor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E28FD5F7F995B4D6E8B7DB6 /* Pods_iHeartMonitor.framework */; };
-		AAB41BB120AA737600386575 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AAB41BB020AA737600386575 /* GoogleService-Info.plist */; };
 		C086E59F20A7793200ACACAF /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C086E59E20A7793200ACACAF /* UserProfileViewController.swift */; };
 		C086E5A120A7794800ACACAF /* HeartRateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C086E5A020A7794800ACACAF /* HeartRateViewController.swift */; };
 		C086E5A320A77A6F00ACACAF /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C086E5A220A77A6F00ACACAF /* LoginViewController.swift */; };
@@ -22,6 +21,7 @@
 		C094EA082093E98500EDD213 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C094EA062093E98500EDD213 /* LaunchScreen.storyboard */; };
 		C094EA132093E98500EDD213 /* iHeartMonitorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C094EA122093E98500EDD213 /* iHeartMonitorTests.swift */; };
 		C094EA1E2093E98500EDD213 /* iHeartMonitorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C094EA1D2093E98500EDD213 /* iHeartMonitorUITests.swift */; };
+		C0A139E020AC9087001B5A56 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C0A139DF20AC9087001B5A56 /* GoogleService-Info.plist */; };
 		C0CD03A12098FB210045F1A9 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0CD03A02098FB210045F1A9 /* HealthKit.framework */; };
 		C0F6D45320A80F3D00B4F24D /* Charts.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = C0F6D45220A80F3D00B4F24D /* Charts.xcconfig */; };
 		C0F6D45B20A8AD3500B4F24D /* NavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F6D45A20A8AD3500B4F24D /* NavigationViewController.swift */; };
@@ -75,7 +75,6 @@
 		5E28FD5F7F995B4D6E8B7DB6 /* Pods_iHeartMonitor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iHeartMonitor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		64923521FC6E1E87440D045B /* Pods-iHeartMonitorUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iHeartMonitorUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iHeartMonitorUITests/Pods-iHeartMonitorUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		9C63B54434C0E68DD6763BA5 /* Pods-iHeartMonitor.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iHeartMonitor.release.xcconfig"; path = "Pods/Target Support Files/Pods-iHeartMonitor/Pods-iHeartMonitor.release.xcconfig"; sourceTree = "<group>"; };
-		AAB41BB020AA737600386575 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		BF69C08A2B12636306E042CA /* Pods_iHeartMonitorUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iHeartMonitorUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C086E59E20A7793200ACACAF /* UserProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
 		C086E5A020A7794800ACACAF /* HeartRateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartRateViewController.swift; sourceTree = "<group>"; };
@@ -96,6 +95,7 @@
 		C094EA1D2093E98500EDD213 /* iHeartMonitorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iHeartMonitorUITests.swift; sourceTree = "<group>"; };
 		C094EA1F2093E98500EDD213 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C094EA2E2093EF0500EDD213 /* iHeartMonitor.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iHeartMonitor.entitlements; sourceTree = "<group>"; };
+		C0A139DF20AC9087001B5A56 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C0CD03A02098FB210045F1A9 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		C0CD03CA209934540045F1A9 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS4.2.sdk/System/Library/Frameworks/HealthKit.framework; sourceTree = DEVELOPER_DIR; };
 		C0F6D45220A80F3D00B4F24D /* Charts.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Charts.xcconfig; sourceTree = "<group>"; };
@@ -149,7 +149,7 @@
 		C094E9F12093E98500EDD213 = {
 			isa = PBXGroup;
 			children = (
-				AAB41BB020AA737600386575 /* GoogleService-Info.plist */,
+				C0A139DF20AC9087001B5A56 /* GoogleService-Info.plist */,
 				C0F6D45220A80F3D00B4F24D /* Charts.xcconfig */,
 				C094E9FC2093E98500EDD213 /* iHeartMonitor */,
 				C094EA112093E98500EDD213 /* iHeartMonitorTests */,
@@ -346,7 +346,7 @@
 			files = (
 				C094EA082093E98500EDD213 /* LaunchScreen.storyboard in Resources */,
 				C094EA052093E98500EDD213 /* Assets.xcassets in Resources */,
-				AAB41BB120AA737600386575 /* GoogleService-Info.plist in Resources */,
+				C0A139E020AC9087001B5A56 /* GoogleService-Info.plist in Resources */,
 				C094EA032093E98500EDD213 /* Main.storyboard in Resources */,
 				C0F6D45320A80F3D00B4F24D /* Charts.xcconfig in Resources */,
 			);

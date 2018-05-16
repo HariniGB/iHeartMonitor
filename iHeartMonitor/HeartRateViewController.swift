@@ -54,6 +54,12 @@ class HeartRateViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // Hide the navigation bar on the this view controller
+        self.navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
     
     func authorizeHealthKitinApp() -> Bool
     {
@@ -248,14 +254,14 @@ class HeartRateViewController: UIViewController {
     //Function to find average heart rate
     func getAVGHeartRate(completion: @escaping (_ array: [Double]) -> Void) {
         
-        var typeHeart = HKQuantityType.quantityType(forIdentifier: .heartRate)
-        var startDate = Date() - 7 * 24 * 60 * 60 // start date is a week
-        var predicate: NSPredicate? = HKQuery.predicateForSamples(withStart: startDate, end: Date(), options: HKQueryOptions.strictEndDate)
+        let typeHeart = HKQuantityType.quantityType(forIdentifier: .heartRate)
+        let startDate = Date() - 7 * 24 * 60 * 60 // start date is a week
+        let predicate: NSPredicate? = HKQuery.predicateForSamples(withStart: startDate, end: Date(), options: HKQueryOptions.strictEndDate)
         
-        var squery = HKStatisticsQuery(quantityType: typeHeart!, quantitySamplePredicate: predicate, options: .discreteAverage, completionHandler: {(query: HKStatisticsQuery,result: HKStatistics?, error: Error?) -> Void in
+        let squery = HKStatisticsQuery(quantityType: typeHeart!, quantitySamplePredicate: predicate, options: .discreteAverage, completionHandler: {(query: HKStatisticsQuery,result: HKStatistics?, error: Error?) -> Void in
             DispatchQueue.main.async(execute: {() -> Void in
-                var quantity: HKQuantity? = result?.averageQuantity()
-                var beats: Double? = quantity?.doubleValue(for: HKUnit.count().unitDivided(by: HKUnit.minute()))
+                let quantity: HKQuantity? = result?.averageQuantity()
+                var _: Double? = quantity?.doubleValue(for: HKUnit.count().unitDivided(by: HKUnit.minute()))
                //print("got")
             })
         })
